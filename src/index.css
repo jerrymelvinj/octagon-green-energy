@@ -1,0 +1,18 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #041C3F;
+  --color-primary-dark: #02112b;
+  --color-accent: #F5B904;
+  --color-accent-dark: #d49f03;
+  --color-complementary: #38bdf8; /* Light sky blue accent to complement navy */
+  --color-bg-neutral: #f8fafc;
+  --color-surface: #ffffff;
+  --color-border-subtle: #e2e8f0;
+}
+
+body {
+  background-color: var(--color-bg-neutral);
+  color: #0f172a; /* Slate 900 for dark text */
+  -webkit-font-smoothing: antialiased;
+}
