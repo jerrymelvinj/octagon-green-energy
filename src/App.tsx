@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
-import { Header, Footer, MobileActionDrawer, WelcomePopup } from './components';
+import { Header, Footer, MobileActionDrawer, WelcomePopup, GlobalCTAForm } from './components';
 import { Home, About, Business, Products, Projects, Faqs, Careers, Contact } from './pages';
 
 function ScrollToTop() {
@@ -32,6 +32,7 @@ function App() {
             <Route path="/contact" element={<Contact />} />
           </Routes>
         </main>
+        <GlobalCTAForm />
         <Footer />
         <MobileActionDrawer />
       </div>

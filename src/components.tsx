@@ -477,3 +477,50 @@ export function WelcomePopup() {
     </AnimatePresence>
   );
 }
+
+export function GlobalCTAForm() {
+  const location = useLocation();
+  if (location.pathname === '/contact') return null;
+
+  return (
+    <section className="bg-white py-16 border-t border-border-subtle relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="bg-primary-dark rounded-3xl p-8 md:p-12 relative overflow-hidden shadow-2xl flex flex-col lg:flex-row gap-12 items-center">
+          <div className="absolute top-0 right-0 w-96 h-96 bg-accent rounded-full blur-[150px] opacity-20 -translate-y-1/2 translate-x-1/2"></div>
+          
+          <div className="lg:w-1/2 relative z-10 text-center lg:text-left">
+            <span className="text-accent font-extrabold text-sm tracking-widest uppercase mb-4 inline-block">Free Consultation</span>
+            <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-4">Ready to cut your electricity bill to zero?</h2>
+            <p className="text-slate-300 font-medium text-lg mb-6 max-w-lg mx-auto lg:mx-0">Drop your details below and our engineering team will reach out with a customized feasibility report and quote.</p>
+          </div>
+          
+          <div className="lg:w-1/2 w-full relative z-10">
+            <form action="https://formsubmit.co/sales@octagongreenenergy.com" method="POST" className="bg-white p-6 md:p-8 rounded-2xl shadow-lg space-y-4">
+              <input type="hidden" name="_subject" value="New Quick Lead (Footer Form)" />
+              <input type="hidden" name="_captcha" value="false" />
+              
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-xs font-extrabold text-slate-700 mb-1.5 uppercase tracking-wider">Full Name</label>
+                  <input required type="text" name="name" className="w-full px-4 py-3 rounded-lg border-2 border-slate-200 focus:border-primary focus:ring-0 transition-all font-medium text-sm" placeholder="Your name" />
+                </div>
+                <div>
+                  <label className="block text-xs font-extrabold text-slate-700 mb-1.5 uppercase tracking-wider">Phone Number</label>
+                  <input required type="tel" name="phone" className="w-full px-4 py-3 rounded-lg border-2 border-slate-200 focus:border-primary focus:ring-0 transition-all font-medium text-sm" placeholder="Mobile number" />
+                </div>
+              </div>
+              <div>
+                <label className="block text-xs font-extrabold text-slate-700 mb-1.5 uppercase tracking-wider">How can we help?</label>
+                <textarea required name="message" rows={2} className="w-full px-4 py-3 rounded-lg border-2 border-slate-200 focus:border-primary focus:ring-0 transition-all font-medium text-sm resize-none" placeholder="E.g., I need a 3kW residential system..."></textarea>
+              </div>
+              <input type="text" name="_honey" className="hidden" />
+              <button type="submit" className="w-full bg-accent hover:bg-accent-dark text-primary-dark font-extrabold py-3.5 rounded-lg transition-all shadow-md text-base mt-2">
+                Request Free Callback
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
