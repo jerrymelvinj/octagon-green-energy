@@ -13,7 +13,8 @@ import {
   CheckCircle2,
   AlertCircle,
   Star,
-  ChevronDown
+  ChevronDown,
+  Mail
 } from 'lucide-react';
 import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
@@ -590,9 +591,81 @@ function FAQ() {
   );
 }
 
+function ContactForm() {
+  return (
+    <section id="contact" className="py-24 bg-slate-50 border-t border-border-subtle relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid lg:grid-cols-2 gap-16 items-center">
+          <div>
+            <span className="text-accent-dark font-extrabold text-sm tracking-widest uppercase bg-accent/10 px-3 py-1.5 rounded-full inline-block mb-4">
+              Get In Touch
+            </span>
+            <h2 className="text-3xl md:text-5xl font-extrabold text-primary-dark mb-6">Have questions? We're here to help.</h2>
+            <p className="text-slate-600 leading-relaxed text-lg font-medium mb-8">
+              Whether you need a custom commercial quote or just want to understand the PM Surya Ghar subsidy process, drop us a message.
+            </p>
+            <div className="space-y-6">
+              <div className="flex items-center gap-5">
+                <div className="w-14 h-14 bg-white shadow-sm border border-border-subtle rounded-full flex items-center justify-center">
+                  <Phone className="text-primary" size={24} />
+                </div>
+                <div>
+                  <p className="text-xs text-slate-500 font-extrabold uppercase tracking-wider mb-1">Call Us</p>
+                  <p className="font-extrabold text-primary-dark text-xl">+91 79042 59086</p>
+                </div>
+              </div>
+              <div className="flex items-center gap-5">
+                <div className="w-14 h-14 bg-white shadow-sm border border-border-subtle rounded-full flex items-center justify-center">
+                  <Mail className="text-primary" size={24} />
+                </div>
+                <div>
+                  <p className="text-xs text-slate-500 font-extrabold uppercase tracking-wider mb-1">Email</p>
+                  <p className="font-extrabold text-primary-dark text-xl">sales@oct.trichywebdesign.in</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="bg-white rounded-3xl p-8 md:p-10 border border-border-subtle shadow-xl relative overflow-hidden">
+            <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-primary to-accent"></div>
+            <form action="https://formsubmit.co/sales@oct.trichywebdesign.in" method="POST" className="space-y-5 mt-2">
+              <input type="hidden" name="_subject" value="New Lead from Octagon Green Energy Website!" />
+              <input type="hidden" name="_captcha" value="false" />
+              <input type="hidden" name="_template" value="table" />
+              
+              <div>
+                <label className="block text-sm font-extrabold text-slate-700 mb-2 uppercase tracking-wider">Name</label>
+                <input required type="text" name="name" className="w-full px-4 py-3.5 rounded-xl border-2 border-slate-200 focus:outline-none focus:ring-0 focus:border-primary transition-all text-lg font-medium" placeholder="Your name" />
+              </div>
+              <div>
+                <label className="block text-sm font-extrabold text-slate-700 mb-2 uppercase tracking-wider">Phone / WhatsApp</label>
+                <input required type="tel" name="phone" className="w-full px-4 py-3.5 rounded-xl border-2 border-slate-200 focus:outline-none focus:ring-0 focus:border-primary transition-all text-lg font-medium" placeholder="Your number" />
+              </div>
+              <div>
+                <label className="block text-sm font-extrabold text-slate-700 mb-2 uppercase tracking-wider">Email Address</label>
+                <input required type="email" name="email" className="w-full px-4 py-3.5 rounded-xl border-2 border-slate-200 focus:outline-none focus:ring-0 focus:border-primary transition-all text-lg font-medium" placeholder="you@example.com" />
+              </div>
+              <div>
+                <label className="block text-sm font-extrabold text-slate-700 mb-2 uppercase tracking-wider">Message</label>
+                <textarea required name="message" rows={4} className="w-full px-4 py-3.5 rounded-xl border-2 border-slate-200 focus:outline-none focus:ring-0 focus:border-primary transition-all text-lg font-medium resize-none" placeholder="How can we help you?"></textarea>
+              </div>
+
+              <input type="text" name="_honey" className="hidden" />
+
+              <button type="submit" className="w-full bg-primary hover:bg-primary-dark text-white font-extrabold py-4 rounded-xl transition-all shadow-lg mt-2 text-lg">
+                Send Message
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function Footer() {
   return (
-    <footer id="contact" className="bg-primary-dark text-slate-400 py-16 pb-28 md:pb-16 border-t border-[#031530]">
+    <footer className="bg-primary-dark text-slate-400 py-16 pb-28 md:pb-16 border-t border-[#031530]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-4 gap-12">
         <div className="col-span-1 md:col-span-2">
            <div className="flex items-center gap-3 mb-6">
@@ -655,6 +728,7 @@ export default function App() {
         <Calculator />
         <Testimonials />
         <FAQ />
+        <ContactForm />
       </main>
       <Footer />
       <MobileActionDrawer />
