@@ -79,18 +79,18 @@ export function Home() {
               </a>
             </div>
             
-            <div className="mt-16 bg-slate-50 border border-border-subtle rounded-3xl p-6 md:p-8 max-w-4xl mx-auto shadow-sm">
+            <div className="mt-16 bg-slate-50 border border-border-subtle rounded-3xl p-6 md:p-8 max-w-4xl mx-auto">
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 divide-y md:divide-y-0 md:divide-x divide-border-subtle">
                 <div className="flex flex-col items-center justify-center pt-4 md:pt-0">
-                  <CheckCircle2 size={32} className="text-accent mb-3 drop-shadow-sm" />
+                  <CheckCircle2 size={32} className="text-accent mb-3" />
                   <span className="font-extrabold text-lg text-primary-dark text-center leading-tight">Tier-1 Solar<br/>Modules</span>
                 </div>
                 <div className="flex flex-col items-center justify-center pt-6 md:pt-0">
-                  <CheckCircle2 size={32} className="text-accent mb-3 drop-shadow-sm" />
+                  <CheckCircle2 size={32} className="text-accent mb-3" />
                   <span className="font-extrabold text-lg text-primary-dark text-center leading-tight">25-Year Performance<br/>Warranty</span>
                 </div>
                 <div className="flex flex-col items-center justify-center pt-6 md:pt-0">
-                  <CheckCircle2 size={32} className="text-accent mb-3 drop-shadow-sm" />
+                  <CheckCircle2 size={32} className="text-accent mb-3" />
                   <span className="font-extrabold text-lg text-primary-dark text-center leading-tight">200+ Installations<br/>in TN</span>
                 </div>
               </div>
