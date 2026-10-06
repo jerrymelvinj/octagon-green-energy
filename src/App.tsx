@@ -3,7 +3,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { 
   Phone, 
   MapPin, 
-  Sun, 
   Zap, 
   Factory, 
   Sprout, 
