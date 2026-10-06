@@ -150,7 +150,23 @@ export function MobileActionDrawer() {
 }
 
 export function BrandsCarousel() {
-  const brandLogos = Array.from({ length: 14 }, (_, i) => `/brands/logo_${i}.png`);
+  const brands = [
+    { name: "Havells", domain: "havells.com" },
+    { name: "UTL Solar", domain: "utlsolar.com" },
+    { name: "Exide", domain: "exideindustries.com" },
+    { name: "SMA", domain: "sma.de" },
+    { name: "Solis", domain: "ginlong.com" },
+    { name: "Sungrow", domain: "sungrowpower.com" },
+    { name: "K Solare", domain: "ksolare.com" },
+    { name: "GoodWe", domain: "goodwe.com" },
+    { name: "Delta", domain: "deltaww.com" },
+    { name: "Leader", domain: "leaderbatteries.com" },
+    { name: "Okaya", domain: "okayapower.com" },
+    { name: "Canadian Solar", domain: "canadiansolar.com" },
+    { name: "ABB", domain: "abb.com" },
+    { name: "Luminous", domain: "luminousindia.com" },
+    { name: "Growatt", domain: "ginverter.com" },
+  ];
 
   return (
     <section className="py-24 bg-white border-t border-border-subtle overflow-hidden">
@@ -163,9 +179,22 @@ export function BrandsCarousel() {
       
       <div className="relative w-full flex overflow-x-hidden group py-4">
         <div className="flex animate-marquee-fast whitespace-nowrap items-center">
-          {[...brandLogos, ...brandLogos, ...brandLogos].map((src, i) => (
-            <div key={i} className="mx-8 md:mx-12 flex items-center justify-center grayscale hover:grayscale-0 opacity-70 hover:opacity-100 transition-all duration-300 cursor-default h-16 w-32 md:w-40 relative">
-               <img src={src} alt="Brand Logo" className="max-h-full max-w-full object-contain" />
+          {[...brands, ...brands, ...brands].map((brand, i) => (
+            <div key={i} className="mx-8 md:mx-12 flex items-center justify-center grayscale hover:grayscale-0 opacity-70 hover:opacity-100 transition-all duration-300 cursor-default h-12 w-28 md:w-36 relative group/logo">
+               <img 
+                 src={`https://logo.clearbit.com/${brand.domain}?size=400`} 
+                 alt={brand.name} 
+                 className="max-h-full max-w-full object-contain drop-shadow-sm"
+                 onError={(e) => {
+                   e.currentTarget.style.display = 'none';
+                   if (e.currentTarget.nextElementSibling) {
+                     e.currentTarget.nextElementSibling.classList.remove('hidden');
+                   }
+                 }}
+               />
+               <span className="hidden text-xl md:text-2xl font-black tracking-tighter uppercase text-slate-400 group-hover/logo:text-primary transition-colors">
+                 {brand.name}
+               </span>
             </div>
           ))}
         </div>
@@ -176,7 +205,7 @@ export function BrandsCarousel() {
           100% { transform: translateX(-33.33%); }
         }
         .animate-marquee-fast {
-          animation: marquee-fast 25s linear infinite;
+          animation: marquee-fast 35s linear infinite;
         }
       `}</style>
     </section>
