@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
-import { Header, Footer, MobileActionDrawer } from './components';
+import { Header, Footer, MobileActionDrawer, WelcomePopup } from './components';
 import { Home, About, Business, Products, Projects, Faqs, Careers, Contact } from './pages';
 
 function ScrollToTop() {
@@ -17,6 +17,7 @@ function App() {
   return (
     <Router>
       <ScrollToTop />
+      <WelcomePopup />
       <div className="font-sans min-h-screen flex flex-col bg-bg-neutral selection:bg-accent/30 selection:text-primary-dark">
         <Header />
         <main className="flex-grow">

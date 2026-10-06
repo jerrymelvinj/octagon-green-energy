@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
@@ -8,7 +8,10 @@ import {
   X,
   MessageCircle,
   AlertCircle,
-  ChevronRight
+  ChevronRight,
+  Zap,
+  Sprout,
+  Factory
 } from 'lucide-react';
 import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
@@ -391,3 +394,86 @@ export function Calculator() {
 
 // Just an alias for CheckCircle2 to use inside components.
 import { CheckCircle2 } from 'lucide-react';
+
+
+export function WelcomePopup() {
+  const [isOpen, setIsOpen] = useState(false);
+
+  useEffect(() => {
+    const hasSeenPopup = sessionStorage.getItem('octagon_welcome_seen');
+    if (!hasSeenPopup) {
+      const timer = setTimeout(() => {
+        setIsOpen(true);
+        sessionStorage.setItem('octagon_welcome_seen', 'true');
+      }, 2500);
+      return () => clearTimeout(timer);
+    }
+  }, []);
+
+  if (!isOpen) return null;
+
+  return (
+    <AnimatePresence>
+      <motion.div 
+        initial={{ opacity: 0 }} 
+        animate={{ opacity: 1 }} 
+        exit={{ opacity: 0 }}
+        className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-primary-dark/80 backdrop-blur-sm"
+      >
+        <motion.div 
+          initial={{ scale: 0.9, opacity: 0, y: 20 }} 
+          animate={{ scale: 1, opacity: 1, y: 0 }}
+          exit={{ scale: 0.9, opacity: 0, y: 20 }}
+          className="bg-white rounded-3xl w-full max-w-lg p-8 relative overflow-hidden shadow-2xl"
+        >
+          <button onClick={() => setIsOpen(false)} className="absolute top-6 right-6 text-slate-400 hover:text-slate-800 transition-colors">
+             <X size={24} />
+          </button>
+          
+          <div className="mb-8 pr-6">
+            <span className="text-accent-dark font-extrabold text-xs tracking-widest uppercase bg-accent/10 px-3 py-1.5 rounded-full inline-block mb-4">
+              Welcome to Octagon
+            </span>
+            <h3 className="text-3xl font-extrabold text-primary-dark mb-2">How can we help you power up today?</h3>
+            <p className="text-slate-600 font-medium text-lg">Select your requirement below for a tailored experience.</p>
+          </div>
+
+          <div className="space-y-4">
+            <Link to="/#calculator" onClick={() => setIsOpen(false)} className="flex items-center gap-4 p-4 rounded-2xl border-2 border-slate-100 hover:border-primary hover:bg-slate-50 transition-all group">
+               <div className="bg-primary/10 p-3 rounded-xl text-primary group-hover:scale-110 transition-transform">
+                 <Zap size={24} />
+               </div>
+               <div className="text-left flex-grow">
+                 <h4 className="font-extrabold text-primary-dark text-lg">Solar for my Home</h4>
+                 <p className="text-sm text-slate-500 font-medium">Subsidized rooftop systems</p>
+               </div>
+               <ChevronRight className="text-slate-300 group-hover:text-primary transition-colors" />
+            </Link>
+
+            <Link to="/business" onClick={() => setIsOpen(false)} className="flex items-center gap-4 p-4 rounded-2xl border-2 border-slate-100 hover:border-primary hover:bg-slate-50 transition-all group">
+               <div className="bg-primary/10 p-3 rounded-xl text-primary group-hover:scale-110 transition-transform">
+                 <Factory size={24} />
+               </div>
+               <div className="text-left flex-grow">
+                 <h4 className="font-extrabold text-primary-dark text-lg">Solar for my Business</h4>
+                 <p className="text-sm text-slate-500 font-medium">High-capacity EPC & ROI analysis</p>
+               </div>
+               <ChevronRight className="text-slate-300 group-hover:text-primary transition-colors" />
+            </Link>
+
+            <Link to="/business" onClick={() => setIsOpen(false)} className="flex items-center gap-4 p-4 rounded-2xl border-2 border-slate-100 hover:border-primary hover:bg-slate-50 transition-all group">
+               <div className="bg-primary/10 p-3 rounded-xl text-primary group-hover:scale-110 transition-transform">
+                 <Sprout size={24} />
+               </div>
+               <div className="text-left flex-grow">
+                 <h4 className="font-extrabold text-primary-dark text-lg">Agricultural Pumps</h4>
+                 <p className="text-sm text-slate-500 font-medium">Off-grid irrigation solutions</p>
+               </div>
+               <ChevronRight className="text-slate-300 group-hover:text-primary transition-colors" />
+            </Link>
+          </div>
+        </motion.div>
+      </motion.div>
+    </AnimatePresence>
+  );
+}
