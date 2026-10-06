@@ -132,40 +132,22 @@ function Hero() {
 }
 
 function BrandsCarousel() {
-  const brandLogos = [
-    { name: "HAVELLS", color: "text-red-600" },
-    { name: "UTL SOLAR", color: "text-emerald-600" },
-    { name: "EXIDE", color: "text-red-500" },
-    { name: "SMA", color: "text-blue-700" },
-    { name: "solis", color: "text-orange-500" },
-    { name: "SUNGROW", color: "text-amber-600" },
-    { name: "K Solare", color: "text-orange-600" },
-    { name: "GOODWE", color: "text-red-700" },
-    { name: "DELTA", color: "text-blue-500" },
-    { name: "LEADER", color: "text-slate-800" },
-    { name: "OKAYA", color: "text-green-600" },
-    { name: "CanadianSolar", color: "text-red-600" },
-    { name: "ABB", color: "text-red-600" },
-    { name: "LUMINOUS", color: "text-blue-800" },
-    { name: "Growatt", color: "text-lime-600" },
-  ];
+  const brandLogos = Array.from({ length: 14 }, (_, i) => `/brands/logo_${i}.png`);
 
   return (
-    <section className="py-12 bg-white border-t border-border-subtle overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8">
-        <div className="flex items-center gap-4">
-          <div className="w-1.5 h-8 bg-accent rounded-full"></div>
-          <h3 className="text-2xl md:text-3xl font-extrabold text-primary-dark">Our Major Brands</h3>
+    <section className="py-24 bg-white border-t border-border-subtle overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
+        <div className="flex items-center justify-center gap-4">
+          <div className="w-1.5 h-10 bg-accent rounded-full"></div>
+          <h3 className="text-3xl md:text-5xl font-extrabold text-primary-dark">Our Major Brands</h3>
         </div>
       </div>
       
       <div className="relative w-full flex overflow-x-hidden group py-4">
         <div className="flex animate-marquee-fast whitespace-nowrap items-center">
-          {[...brandLogos, ...brandLogos, ...brandLogos].map((brand, i) => (
-            <div key={i} className="mx-8 md:mx-12 flex items-center justify-center grayscale hover:grayscale-0 opacity-60 hover:opacity-100 transition-all duration-300 cursor-default">
-               <span className={cn("text-2xl md:text-3xl font-black tracking-tighter uppercase", brand.color)}>
-                 {brand.name}
-               </span>
+          {[...brandLogos, ...brandLogos, ...brandLogos].map((src, i) => (
+            <div key={i} className="mx-8 md:mx-12 flex items-center justify-center grayscale hover:grayscale-0 opacity-70 hover:opacity-100 transition-all duration-300 cursor-default h-16 w-32 md:w-40 relative">
+               <img src={src} alt="Brand Logo" className="max-h-full max-w-full object-contain" />
             </div>
           ))}
         </div>
